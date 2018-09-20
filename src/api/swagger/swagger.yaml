@@ -19,21 +19,22 @@ paths:
   /timestamp:
     x-swagger-router-controller: timestamp
     get:
-      description: Get the current timestamp from the server
+      summary: Get current timestamp
+      description: Gets the current server time as a timestamp
       operationId: getTimestamp
       responses:
         "200":
           description: Success
           schema:
             type: string
-          # example:
-          #   Tue Sep 18 2018 19:20:07 GMT+0200 (Mitteleuropäische Sommerzeit)
+            example: "2018-9-20 23:02:46"
         default:
           $ref: "#/responses/ErrorResponse"
   /documents:
     x-swagger-router-controller: documents
     post:
-      description: Add a new document
+      summary: Add a new document
+      description: Add a new document. Properties createdAt, id and downloads will be set by the server.
       operationId: create
       parameters:
         - name: newDocument
@@ -46,12 +47,12 @@ paths:
         "201":
           description: Successfully created
           schema:
-            $ref: "#/definitions/NewDocument"
+            $ref: "#/definitions/ExistingDocument"
         default:
           $ref: "#/responses/ErrorResponse"
     get:
-      description: |
-        Get all available documents
+      summary: Get all documents
+      description: Get all available documents from list
       operationId: readAll
       responses:
         "200":
@@ -65,6 +66,7 @@ paths:
   /documents/{id}:
     x-swagger-router-controller: documents
     get:
+      summary: Get a document
       description: Get a document by its ID
       operationId: readById
       parameters:
@@ -82,6 +84,7 @@ paths:
         default:
           $ref: "#/responses/ErrorResponse"
     delete:
+      summary: Delete a document
       description: Delete a document by its ID
       operationId: deleteById
       parameters:
@@ -97,6 +100,7 @@ paths:
         default:
           $ref: "#/responses/ErrorResponse"
     patch:
+      summary: Update a document
       description: Update some attributes of a document identified by its ID
       operationId: updateById
       parameters:
@@ -139,6 +143,10 @@ definitions:
       - title
       - author
       - content
+    example:
+      title: Example title for a new document
+      author: Example author for a new document
+      content: Example content for a new document
   # An existing Document has more data:
   ExistingDocument:
     properties:
@@ -169,6 +177,13 @@ definitions:
       - content
       - createdAt
       - downloads
+    example:
+      createdAt: 2018-09-20T21:01:29.060Z
+      title: Example title in an existing document
+      author: Example author in an existing document
+      content: Example content in an existing document
+      id: 2
+      downloads: 0
   DocumentOptional:
     properties:
       title:
@@ -180,6 +195,10 @@ definitions:
       content:
         type: string
         description: Content of the document
+    example:
+      title: Optional example title
+      author: Optional example author
+      content: Optional example content
 # response definitions:
 responses:
   DeleteResponse:
@@ -195,11 +214,16 @@ responses:
       required:
         - success
         - description
+      example:
+        success: 1
+        description: Document with id 0 is deleted.
   ErrorResponse:
     description: Error
     schema:
-      required:
-        - message
       properties:
         message:
           type: string
+      required:
+        - message
+      example:
+        message: ERROR in ... 
