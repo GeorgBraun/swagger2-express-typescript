@@ -33,7 +33,9 @@ This is a NodeJS project (https://nodejs.org/). It was created using NodeJS v8.9
 
 ### 3.1. Installation
 
-Download the ZIP-Archive and unpack it into your desired working folder. Change directory into the project root folder (e.g. where the file `package.json` is located) and run `npm install`. This will download and unpack all required packages (approx. 144 MByte) into the folder `node_modules`. 
+Download the ZIP-Archive and unpack it into your desired working folder. Change directory into the project root folder (e.g. where the file `package.json` is located) and run `npm install`. This will download and unpack all required packages (approx. 144 MByte) into the folder `node_modules`.
+
+Open the file `package.json` in the project root folder and modify the entries for `"name"`, `"version"`, `"description"`, `"keywords"` and `"author"` accourding to your needs. If you also change the entry for `"license"`, you should also change the contenst of the file `LICENSE` in the project root folder.
 
 ### 3.2. Use the RestAPI
 
