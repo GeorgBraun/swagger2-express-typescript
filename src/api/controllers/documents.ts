@@ -1,4 +1,5 @@
 import { Response } from "express";
+import { SwaggerRequest } from "../swagger/swagger-request";
 import { inspect  } from "util";
 
 // Import the class definitions for Document and Documents:
@@ -25,7 +26,7 @@ import { documents } from "../../app";
 /**
  * Created a new document and add it to the list of documents. Respond with created Document.
  */
-export const create = (req:any, res:Response) => {
+export const create = (req:SwaggerRequest, res:Response) => {
   const reqDocument = req.body;
   console.log("Controller documents, create(), reqDocument:", reqDocument);
 
@@ -42,7 +43,7 @@ export const create = (req:any, res:Response) => {
 /**
  * Respond with a full list of all documents.
  */
-export const readAll = (req:any, res:Response) => {
+export const readAll = (req:SwaggerRequest, res:Response) => {
   console.log("Controller:documents.ts, readAll()");
 
   try {
@@ -56,7 +57,7 @@ export const readAll = (req:any, res:Response) => {
 /**
  * Search for a document by its id. Respond with found document or with an error.
  */
-export const readById = (req:any, res:Response) => {
+export const readById = (req:SwaggerRequest, res:Response) => {
   console.log("Controller:documents.ts, readById()");
   const reqId = req.swagger.params.id.value;
   console.log("Requested id:", reqId);
@@ -72,7 +73,7 @@ export const readById = (req:any, res:Response) => {
 /**
  * Delete a document by its id. Respond with found document or with an error.
  */
-export const deleteById = (req:any, res:Response) => {
+export const deleteById = (req:SwaggerRequest, res:Response) => {
   console.log("Controller:documents.ts, deleteById()");
   const reqId = req.swagger.params.id.value;
   console.log("Requested id:", reqId);
@@ -91,7 +92,7 @@ export const deleteById = (req:any, res:Response) => {
 /**
  * Updates an existing document.
  */
-export const updateById = (req:any, res:Response) => {
+export const updateById = (req:SwaggerRequest, res:Response) => {
   console.log("Controller:documents.ts, updateById()");
   const reqId = req.swagger.params.id.value;
   const reqDocument = req.body;
