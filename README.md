@@ -39,7 +39,7 @@ Open the file `package.json` in the project root folder and modify the entries f
 
 ### 3.2. Use the RestAPI
 
-You can start the RestAPI web server by `npm run`. This will compile the source code files and start the server. When finished, you should see a message `Server fired up on http://localhost:3333`. Start a browser and direct it to http://localhost:3333/ (if you access the RestAPI from a different computer, replace "localhost" by the IP address or DNS name of the server running the RestAPI). This will display the Swagger UI which can be used to study and exercise the RestAPI:
+You can start the RestAPI web server by `npm start`. This will compile the source code files and start the server. When finished, you should see a message `Server fired up on http://localhost:3333`. Start a browser and direct it to http://localhost:3333/ (if you access the RestAPI from a different computer, replace "localhost" by the IP address or DNS name of the server running the RestAPI). This will display the Swagger UI which can be used to study and exercise the RestAPI:
 
 ![](screenshot-1.png)
 
